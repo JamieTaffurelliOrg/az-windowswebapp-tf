@@ -1,6 +1,7 @@
 resource "azurerm_windows_web_app" "web_app" {
   #checkov:skip=CKV_AZURE_17:Requiring client certs for all apps is too much
   #checkov:skip=CKV_AZURE_88:This is not a requirement
+  #checkov:skip=CKV_AZURE_80:This is parameterised
   name                               = var.web_app_name
   resource_group_name                = var.resource_group_name
   location                           = data.azurerm_service_plan.service_plan.location
@@ -11,6 +12,7 @@ resource "azurerm_windows_web_app" "web_app" {
   client_certificate_mode            = var.client_certificate_mode
   client_certificate_exclusion_paths = var.client_certificate_exclusion_paths
   https_only                         = var.https_only
+  public_network_access_enabled      = false
   zip_deploy_file                    = var.zip_deploy_file
   app_settings                       = var.app_settings
 
