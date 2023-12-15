@@ -367,63 +367,28 @@ resource "azurerm_monitor_diagnostic_setting" "app_diagnostics" {
   target_resource_id         = azurerm_windows_web_app.web_app.id
   log_analytics_workspace_id = data.azurerm_log_analytics_workspace.logs.id
 
-  log {
+  enabled_log {
     category = "AppServiceHttpLogs"
-    enabled  = true
-
-    retention_policy {
-      enabled = true
-      days    = 365
-    }
   }
 
-  log {
+  enabled_log {
     category = "AppServiceConsoleLogs"
-    enabled  = true
-
-    retention_policy {
-      enabled = true
-      days    = 365
-    }
   }
 
-  log {
+  enabled_log {
     category = "AppServiceAppLogs"
-    enabled  = true
-
-    retention_policy {
-      enabled = true
-      days    = 365
-    }
   }
 
-  log {
+  enabled_log {
     category = "AppServiceFileAuditLogs"
-    enabled  = true
-
-    retention_policy {
-      enabled = true
-      days    = 365
-    }
   }
 
-  log {
+  enabled_log {
     category = "AppServiceAuditLogs"
-    enabled  = true
-
-    retention_policy {
-      enabled = true
-      days    = 365
-    }
   }
 
   metric {
     category = "AllMetrics"
     enabled  = true
-
-    retention_policy {
-      enabled = true
-      days    = 365
-    }
   }
 }
